@@ -1,39 +1,43 @@
-package common.config.ui;
+package common.config.swing;
 
+import javax.swing.JSlider;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 
 import common.config.InvalidConfigurationException;
-import common.config.display.LongDisplayType;
-import common.config.leaf.ConfigurationLong;
+import common.config.display.IntegerDisplayType;
+import common.config.leaf.ConfigurationInteger;
 
 /**
- * Object used to display a {@Link ConfigurationLong} on the
+ * Object used to display a {@Link ConfigurationInteger} on the
  * {@link ConfigurationPanel}.
  * 
  * @author benobiwan
  * 
  */
-public class LongEntryComponent extends
-		NumberEntryComponent<Long, LongDisplayType, ConfigurationLong>
+public class IntegerEntryComponent extends
+		NumberEntryComponent<Integer, IntegerDisplayType, ConfigurationInteger>
 {
 	/**
-	 * Creates a new LongEntryComponnent.
+	 * Creates a new IntegerEntryComponnent.
 	 * 
 	 * @param entry
 	 *            the configuration element to display.
 	 */
-	public LongEntryComponent(final ConfigurationLong entry)
+	public IntegerEntryComponent(final ConfigurationInteger entry)
 	{
 		super(entry);
 	}
 
 	@Override
-	protected void setToValueAndShowValidity(final Long value)
+	protected void setToValueAndShowValidity(final Integer value)
 	{
 		switch (_dispType)
 		{
+		case SLIDER:
+			((JSlider) _entryComponent).setValue(value.intValue());
+			break;
 		case SPINNER:
 			((JSpinner) _entryComponent).setValue(value);
 			break;
@@ -47,26 +51,26 @@ public class LongEntryComponent extends
 	@Override
 	protected void generateComponent()
 	{
-		long min, max, initValue;
+		int min, max, initValue;
 		if (_entry.getMinValue() != null)
 		{
-			min = _entry.getMinValue().longValue();
+			min = _entry.getMinValue().intValue();
 		}
 		else
 		{
-			min = Long.MIN_VALUE;
+			min = Integer.MIN_VALUE;
 		}
 		if (_entry.getMaxValue() != null)
 		{
-			max = _entry.getMaxValue().longValue();
+			max = _entry.getMaxValue().intValue();
 		}
 		else
 		{
-			max = Long.MAX_VALUE;
+			max = Integer.MAX_VALUE;
 		}
 		if (_entry.getCurrentValue() != null)
 		{
-			initValue = _entry.getCurrentValue().longValue();
+			initValue = _entry.getCurrentValue().intValue();
 		}
 		else
 		{
@@ -75,6 +79,12 @@ public class LongEntryComponent extends
 		final String strToolTip = "Min : " + min + " Max : " + max;
 		switch (_dispType)
 		{
+		case SLIDER:
+			_entryComponent = new JSlider(min, max, initValue);
+			((JSlider) _entryComponent)
+					.addChangeListener(new ValidateChangeListener());
+			_entryComponent.setToolTipText(strToolTip);
+			break;
 		case SPINNER:
 			final SpinnerNumberModel spinnerModel = new SpinnerNumberModel(
 					initValue, min, max, 1);
@@ -83,7 +93,7 @@ public class LongEntryComponent extends
 			_entryComponent.setToolTipText(strToolTip);
 			break;
 		case TEXTFIELD:
-			_entryComponent = new JTextField(Long.toString(initValue));
+			_entryComponent = new JTextField(Integer.toString(initValue));
 			_entryComponent.setToolTipText(strToolTip);
 			((JTextField) _entryComponent)
 					.addFocusListener(new ValidateFocusListener());
@@ -92,18 +102,23 @@ public class LongEntryComponent extends
 	}
 
 	@Override
-	protected Long getDisplayedValue() throws InvalidConfigurationException
+	protected Integer getDisplayedValue() throws InvalidConfigurationException
 	{
-		Long value;
+		Integer value;
 		switch (_dispType)
 		{
+		case SLIDER:
+			value = Integer.valueOf(((JSlider) _entryComponent).getValue());
+			break;
 		case SPINNER:
-			value = ((Long) ((JSpinner) _entryComponent).getModel().getValue());
+			value = ((Integer) ((JSpinner) _entryComponent).getModel()
+					.getValue());
 			break;
 		case TEXTFIELD:
 			try
 			{
-				value = Long.valueOf(((JTextField) _entryComponent).getText());
+				value = Integer.valueOf(((JTextField) _entryComponent)
+						.getText());
 			}
 			catch (final NumberFormatException ex)
 			{

@@ -1,4 +1,4 @@
-package common.config.ui;
+package common.config.swing;
 
 import javax.swing.JCheckBox;
 import javax.swing.JRadioButton;

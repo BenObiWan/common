@@ -1,4 +1,4 @@
-package common.config.ui;
+package common.config.swing;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

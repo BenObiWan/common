@@ -1,36 +1,36 @@
-package common.config.ui;
+package common.config.swing;
 
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 
 import common.config.InvalidConfigurationException;
-import common.config.display.FloatDisplayType;
-import common.config.leaf.ConfigurationFloat;
+import common.config.display.DoubleDisplayType;
+import common.config.leaf.ConfigurationDouble;
 
 /**
- * Object used to display a {@Link ConfigurationFloat} on the
+ * Object used to display a {@Link ConfigurationDouble} on the
  * {@link ConfigurationPanel}.
  * 
  * @author benobiwan
  * 
  */
-public class FloatEntryComponent extends
-		NumberEntryComponent<Float, FloatDisplayType, ConfigurationFloat>
+public class DoubleEntryComponent extends
+		NumberEntryComponent<Double, DoubleDisplayType, ConfigurationDouble>
 {
 	/**
-	 * Creates a new DoubleEntryComponnent.
+	 * Creates a new DoubleEntryComponent.
 	 * 
 	 * @param entry
 	 *            the configuration element to display.
 	 */
-	public FloatEntryComponent(final ConfigurationFloat entry)
+	public DoubleEntryComponent(final ConfigurationDouble entry)
 	{
 		super(entry);
 	}
 
 	@Override
-	protected void setToValueAndShowValidity(final Float value)
+	protected void setToValueAndShowValidity(final Double value)
 	{
 		switch (_dispType)
 		{
@@ -47,26 +47,26 @@ public class FloatEntryComponent extends
 	@Override
 	protected void generateComponent()
 	{
-		float min, max, initValue;
+		double min, max, initValue;
 		if (_entry.getMinValue() != null)
 		{
-			min = _entry.getMinValue().floatValue();
+			min = _entry.getMinValue().doubleValue();
 		}
 		else
 		{
-			min = Float.MIN_VALUE;
+			min = Double.MIN_VALUE;
 		}
 		if (_entry.getMaxValue() != null)
 		{
-			max = _entry.getMaxValue().floatValue();
+			max = _entry.getMaxValue().doubleValue();
 		}
 		else
 		{
-			max = Float.MAX_VALUE;
+			max = Double.MAX_VALUE;
 		}
 		if (_entry.getCurrentValue() != null)
 		{
-			initValue = _entry.getCurrentValue().floatValue();
+			initValue = _entry.getCurrentValue().doubleValue();
 		}
 		else
 		{
@@ -83,7 +83,7 @@ public class FloatEntryComponent extends
 			_entryComponent.setToolTipText(strToolTip);
 			break;
 		case TEXTFIELD:
-			_entryComponent = new JTextField(Float.toString(initValue));
+			_entryComponent = new JTextField(Double.toString(initValue));
 			_entryComponent.setToolTipText(strToolTip);
 			((JTextField) _entryComponent)
 					.addFocusListener(new ValidateFocusListener());
@@ -92,18 +92,20 @@ public class FloatEntryComponent extends
 	}
 
 	@Override
-	protected Float getDisplayedValue() throws InvalidConfigurationException
+	protected Double getDisplayedValue() throws InvalidConfigurationException
 	{
-		Float value;
+		Double value;
 		switch (_dispType)
 		{
 		case SPINNER:
-			value = ((Float) ((JSpinner) _entryComponent).getModel().getValue());
+			value = ((Double) ((JSpinner) _entryComponent).getModel()
+					.getValue());
 			break;
 		case TEXTFIELD:
 			try
 			{
-				value = Float.valueOf(((JTextField) _entryComponent).getText());
+				value = Double
+						.valueOf(((JTextField) _entryComponent).getText());
 			}
 			catch (final NumberFormatException ex)
 			{

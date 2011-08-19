@@ -1,43 +1,39 @@
-package common.config.ui;
+package common.config.swing;
 
-import javax.swing.JSlider;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 
 import common.config.InvalidConfigurationException;
-import common.config.display.IntegerDisplayType;
-import common.config.leaf.ConfigurationInteger;
+import common.config.display.FloatDisplayType;
+import common.config.leaf.ConfigurationFloat;
 
 /**
- * Object used to display a {@Link ConfigurationInteger} on the
+ * Object used to display a {@Link ConfigurationFloat} on the
  * {@link ConfigurationPanel}.
  * 
  * @author benobiwan
  * 
  */
-public class IntegerEntryComponent extends
-		NumberEntryComponent<Integer, IntegerDisplayType, ConfigurationInteger>
+public class FloatEntryComponent extends
+		NumberEntryComponent<Float, FloatDisplayType, ConfigurationFloat>
 {
 	/**
-	 * Creates a new IntegerEntryComponnent.
+	 * Creates a new DoubleEntryComponnent.
 	 * 
 	 * @param entry
 	 *            the configuration element to display.
 	 */
-	public IntegerEntryComponent(final ConfigurationInteger entry)
+	public FloatEntryComponent(final ConfigurationFloat entry)
 	{
 		super(entry);
 	}
 
 	@Override
-	protected void setToValueAndShowValidity(final Integer value)
+	protected void setToValueAndShowValidity(final Float value)
 	{
 		switch (_dispType)
 		{
-		case SLIDER:
-			((JSlider) _entryComponent).setValue(value.intValue());
-			break;
 		case SPINNER:
 			((JSpinner) _entryComponent).setValue(value);
 			break;
@@ -51,26 +47,26 @@ public class IntegerEntryComponent extends
 	@Override
 	protected void generateComponent()
 	{
-		int min, max, initValue;
+		float min, max, initValue;
 		if (_entry.getMinValue() != null)
 		{
-			min = _entry.getMinValue().intValue();
+			min = _entry.getMinValue().floatValue();
 		}
 		else
 		{
-			min = Integer.MIN_VALUE;
+			min = Float.MIN_VALUE;
 		}
 		if (_entry.getMaxValue() != null)
 		{
-			max = _entry.getMaxValue().intValue();
+			max = _entry.getMaxValue().floatValue();
 		}
 		else
 		{
-			max = Integer.MAX_VALUE;
+			max = Float.MAX_VALUE;
 		}
 		if (_entry.getCurrentValue() != null)
 		{
-			initValue = _entry.getCurrentValue().intValue();
+			initValue = _entry.getCurrentValue().floatValue();
 		}
 		else
 		{
@@ -79,12 +75,6 @@ public class IntegerEntryComponent extends
 		final String strToolTip = "Min : " + min + " Max : " + max;
 		switch (_dispType)
 		{
-		case SLIDER:
-			_entryComponent = new JSlider(min, max, initValue);
-			((JSlider) _entryComponent)
-					.addChangeListener(new ValidateChangeListener());
-			_entryComponent.setToolTipText(strToolTip);
-			break;
 		case SPINNER:
 			final SpinnerNumberModel spinnerModel = new SpinnerNumberModel(
 					initValue, min, max, 1);
@@ -93,7 +83,7 @@ public class IntegerEntryComponent extends
 			_entryComponent.setToolTipText(strToolTip);
 			break;
 		case TEXTFIELD:
-			_entryComponent = new JTextField(Integer.toString(initValue));
+			_entryComponent = new JTextField(Float.toString(initValue));
 			_entryComponent.setToolTipText(strToolTip);
 			((JTextField) _entryComponent)
 					.addFocusListener(new ValidateFocusListener());
@@ -102,23 +92,18 @@ public class IntegerEntryComponent extends
 	}
 
 	@Override
-	protected Integer getDisplayedValue() throws InvalidConfigurationException
+	protected Float getDisplayedValue() throws InvalidConfigurationException
 	{
-		Integer value;
+		Float value;
 		switch (_dispType)
 		{
-		case SLIDER:
-			value = Integer.valueOf(((JSlider) _entryComponent).getValue());
-			break;
 		case SPINNER:
-			value = ((Integer) ((JSpinner) _entryComponent).getModel()
-					.getValue());
+			value = ((Float) ((JSpinner) _entryComponent).getModel().getValue());
 			break;
 		case TEXTFIELD:
 			try
 			{
-				value = Integer.valueOf(((JTextField) _entryComponent)
-						.getText());
+				value = Float.valueOf(((JTextField) _entryComponent).getText());
 			}
 			catch (final NumberFormatException ex)
 			{
