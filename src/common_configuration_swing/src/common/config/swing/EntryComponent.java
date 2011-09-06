@@ -302,7 +302,7 @@ public abstract class EntryComponent<TYPE, DISP_TYPE extends Enum<DISP_TYPE>, LE
 		}
 		catch (final InvalidConfigurationException e)
 		{
-			LOGGER.error(e.getMessage(), e);
+			LOGGER.error(e.getLocalizedMessage(), e);
 			bRes = false;
 		}
 		_validCheckBox.setSelected(bRes);
