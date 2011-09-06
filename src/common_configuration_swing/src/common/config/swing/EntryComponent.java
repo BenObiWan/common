@@ -12,7 +12,8 @@ import javax.swing.SwingConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import common.config.IConfigurationLeaf;
 import common.config.InvalidConfigurationException;
@@ -41,7 +42,8 @@ public abstract class EntryComponent<TYPE, DISP_TYPE extends Enum<DISP_TYPE>, LE
 	/**
 	 * Logger object.
 	 */
-	private static final Logger LOGGER = Logger.getLogger(EntryComponent.class);
+	private static final Logger LOGGER = LoggerFactory
+			.getLogger(EntryComponent.class);
 
 	/**
 	 * The configuration element.
@@ -300,7 +302,7 @@ public abstract class EntryComponent<TYPE, DISP_TYPE extends Enum<DISP_TYPE>, LE
 		}
 		catch (final InvalidConfigurationException e)
 		{
-			LOGGER.error(e);
+			LOGGER.error(e.getMessage(), e);
 			bRes = false;
 		}
 		_validCheckBox.setSelected(bRes);

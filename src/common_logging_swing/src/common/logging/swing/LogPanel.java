@@ -15,7 +15,8 @@ import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.text.DefaultCaret;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 
@@ -33,7 +34,8 @@ public final class LogPanel extends JScrollPane implements Runnable,
 	/**
 	 * Logger object.
 	 */
-	private static final Logger LOGGER = Logger.getLogger(LogPanel.class);
+	private static final Logger LOGGER = LoggerFactory
+			.getLogger(LogPanel.class);
 
 	/**
 	 * Frame name to use on the frame holding this panel.
