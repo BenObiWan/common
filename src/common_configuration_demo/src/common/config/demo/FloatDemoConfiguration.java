@@ -26,7 +26,7 @@ public final class FloatDemoConfiguration extends AbstractConfigurationBranch
 	private final ConfigurationFloat _leafTextField;
 
 	/**
-	 * Creates a new IntegerDemoConfiguration.
+	 * Creates a new FloatDemoConfiguration.
 	 * 
 	 * @param parent
 	 *            the parent of this configuration.
