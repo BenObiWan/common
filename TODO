@@ -1,0 +1,15 @@
+** common_configuration_core **
+
+- add configuration for shortcuts
+
+** common_configuration_swing **
+
+
+** common_configuration_demo **
+
+- add demo for Long String and Enum.
+- add demo for advanced configuration.
+
+** common_configuration_demo_swing **
+
+** common_logging_swing **
