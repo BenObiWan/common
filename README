@@ -1,7 +1,21 @@
+This repository contains several subproject which are common to other projects.
+
 ** common_configuration_core **
 
+Common classes for handing the configuration of a program.
 
 ** common_configuration_swing **
+
+Common classes used for display and modification of the configuration in a swing GUI.
+
 ** common_configuration_demo **
+
+Demo of the possibilities of the common configuration project.
+
 ** common_configuration_demo_swing **
+
+Demo of the possibilities of the common configuration swing project.
+
 ** common_logging_swing **
+
+Common classes for displaying logging messages in a swing GUI.
