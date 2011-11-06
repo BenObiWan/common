@@ -10,6 +10,11 @@ public class TreeCheckBoxCellEditor extends AbstractCellEditor implements
 		TreeCellEditor
 {
 
+	/**
+	 * serialVersionUID for Serialization.
+	 */
+	private static final long serialVersionUID = 2536906531444518528L;
+
 	@Override
 	public Object getCellEditorValue()
 	{
@@ -18,8 +23,9 @@ public class TreeCheckBoxCellEditor extends AbstractCellEditor implements
 	}
 
 	@Override
-	public Component getTreeCellEditorComponent(JTree tree, Object value,
-			boolean isSelected, boolean expanded, boolean leaf, int row)
+	public Component getTreeCellEditorComponent(final JTree tree,
+			final Object value, final boolean isSelected,
+			final boolean expanded, final boolean leaf, final int row)
 	{
 		// TODO Auto-generated method stub
 		return null;

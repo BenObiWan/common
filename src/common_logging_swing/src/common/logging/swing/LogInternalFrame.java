@@ -6,13 +6,16 @@ import java.util.concurrent.Executor;
 
 import javax.swing.JInternalFrame;
 
+import common.swing.IDisposableFrame;
+
 /**
  * A JInternalFrame for displaying log event.
  * 
  * @author benobiwan
  * 
  */
-public final class LogInternalFrame extends JInternalFrame
+public final class LogInternalFrame extends JInternalFrame implements
+		IDisposableFrame
 {
 	/**
 	 * serialVersionUID for Serialization.
