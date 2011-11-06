@@ -2,7 +2,8 @@ package common.swing;
 
 import javax.swing.JInternalFrame;
 
-public final class DisposableInternalFrame extends JInternalFrame
+public final class DisposableInternalFrame extends JInternalFrame implements
+		IDisposableFrame
 {
 	/**
 	 * serialVersionUID for Serialization.
