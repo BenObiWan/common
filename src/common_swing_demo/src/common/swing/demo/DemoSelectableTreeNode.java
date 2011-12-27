@@ -2,16 +2,16 @@ package common.swing.demo;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 
-import common.SelectableTreeNode;
+import common.ISelectableTreeNode;
 
 /**
- * A {@link SelectableTreeNode}.
+ * A {@link ISelectableTreeNode}.
  * 
  * @author benobiwan
  * 
  */
 public class DemoSelectableTreeNode extends DefaultMutableTreeNode implements
-		SelectableTreeNode
+		ISelectableTreeNode
 {
 	/**
 	 * serialVersionUID for Serialization.
