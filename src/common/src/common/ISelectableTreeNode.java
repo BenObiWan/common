@@ -8,7 +8,7 @@ import javax.swing.tree.TreeNode;
  * @author benobiwan
  * 
  */
-public interface SelectableTreeNode extends TreeNode
+public interface ISelectableTreeNode extends TreeNode
 {
 	/**
 	 * Check whether or not this {@link TreeNode} is selectable.
