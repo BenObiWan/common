@@ -54,8 +54,8 @@ public class DemoSelectableTreeNode extends DefaultMutableTreeNode implements
 	 *            whether or not this {@link DemoSelectableTreeNode} is
 	 *            selectable.
 	 */
-	public DemoSelectableTreeNode(String strName, String strDescription,
-			boolean bSelectable)
+	public DemoSelectableTreeNode(final String strName,
+			final String strDescription, final boolean bSelectable)
 	{
 		this(strName, strDescription, bSelectable, false);
 	}
@@ -74,8 +74,9 @@ public class DemoSelectableTreeNode extends DefaultMutableTreeNode implements
 	 *            whether or not this {@link DemoSelectableTreeNode} is
 	 *            selected.
 	 */
-	public DemoSelectableTreeNode(String strName, String strDescription,
-			boolean bSelectable, boolean bSelected)
+	public DemoSelectableTreeNode(final String strName,
+			final String strDescription, final boolean bSelectable,
+			final boolean bSelected)
 	{
 		super(strName);
 		_strName = strName;
@@ -100,7 +101,7 @@ public class DemoSelectableTreeNode extends DefaultMutableTreeNode implements
 	}
 
 	@Override
-	public void setSelected(boolean bSelected)
+	public void setSelected(final boolean bSelected)
 	{
 		if (_bSelectable)
 		{
