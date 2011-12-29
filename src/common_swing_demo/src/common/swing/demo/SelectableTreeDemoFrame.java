@@ -8,6 +8,9 @@ import javax.swing.tree.TreeNode;
 
 import org.apache.log4j.BasicConfigurator;
 
+import common.swing.TreeCheckBoxCellEditor;
+import common.swing.TreeCheckBoxCellRenderer;
+
 /**
  * Demo for the selectable tree node.
  * 
@@ -38,6 +41,12 @@ public final class SelectableTreeDemoFrame extends JFrame
 		final TreeNode rootNode = createTree();
 		_tree = new JTree(rootNode);
 		expandAll();
+
+		_tree.setCellRenderer(new TreeCheckBoxCellRenderer());
+
+		// _tree.setCellEditor(new TreeCheckBoxCellEditor());
+		// _tree.setEditable(true);
+
 		final JScrollPane scrollPane = new JScrollPane(_tree);
 		setContentPane(scrollPane);
 	}
@@ -53,8 +62,7 @@ public final class SelectableTreeDemoFrame extends JFrame
 				false);
 
 		DefaultMutableTreeNode fam1 = createNode("fam 1", "first family", false);
-		DefaultMutableTreeNode fam2 = createNode("fam 2", "second family",
-				false);
+		DefaultMutableTreeNode fam2 = createNode("fam 2", "second family", true);
 		fam1.insert(createNode("tag 1", "first tag", true),
 				fam1.getChildCount());
 		fam1.insert(createNode("tag 2", "second tag", true),
