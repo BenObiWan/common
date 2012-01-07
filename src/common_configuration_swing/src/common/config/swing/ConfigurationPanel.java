@@ -101,7 +101,19 @@ public final class ConfigurationPanel extends JPanel
 	 */
 	public ConfigurationPanel()
 	{
-		this(null);
+		this(null, true);
+	}
+
+	/**
+	 * Creates a new ConfigurationPanel with no {@link IConfigurationNode} to
+	 * display.
+	 * 
+	 * @param bShowButtons
+	 *            show/hide the Save Reload and Default buttons.
+	 */
+	public ConfigurationPanel(final boolean bShowButtons)
+	{
+		this(null, bShowButtons);
 	}
 
 	/**
@@ -110,8 +122,11 @@ public final class ConfigurationPanel extends JPanel
 	 * 
 	 * @param configuration
 	 *            the {@link IConfigurationNode} to display.
+	 * @param bShowButtons
+	 *            show/hide the Save Reload and Default buttons.
 	 */
-	public ConfigurationPanel(final IConfigurationNode configuration)
+	public ConfigurationPanel(final IConfigurationNode configuration,
+			final boolean bShowButtons)
 	{
 		super(new BorderLayout(5, 5));
 		setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -170,7 +185,10 @@ public final class ConfigurationPanel extends JPanel
 		tmpAllComponentPanel.add(_listPanel);
 		tmpCenterPanel.add(tmpAllComponentPanel, BorderLayout.PAGE_START);
 		add(tmpCenterPanel, BorderLayout.CENTER);
-		add(createBottomPanel(), BorderLayout.PAGE_END);
+		if (bShowButtons)
+		{
+			add(createBottomPanel(), BorderLayout.PAGE_END);
+		}
 		setConfiguration(configuration);
 	}
 
