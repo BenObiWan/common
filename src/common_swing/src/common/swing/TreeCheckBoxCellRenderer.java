@@ -73,7 +73,7 @@ public class TreeCheckBoxCellRenderer extends DefaultTreeCellRenderer
 			_checkBoxCellRenderer.setFocusPainted((bPaintFocus != null)
 					&& (bPaintFocus.booleanValue()));
 		}
-		catch (ClassCastException e)
+		catch (final ClassCastException e)
 		{
 			// nothing
 		}
