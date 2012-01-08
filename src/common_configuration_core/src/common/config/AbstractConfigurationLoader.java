@@ -54,10 +54,10 @@ public abstract class AbstractConfigurationLoader implements
 			if (entry.getKey() instanceof String
 					&& entry.getValue() instanceof String)
 			{
-				final String key = (String) entry.getKey();
+				String key = (String) entry.getKey();
 				if (key.startsWith(getFullCommandLinePrefix()))
 				{
-					key.replace(getFullCommandLinePrefix(), "");
+					key = key.replace(getFullCommandLinePrefix(), "");
 					res.put(key, entry.getValue());
 				}
 			}
