@@ -42,11 +42,11 @@ public final class DemoMain extends JFrame
 		setContentPane(contentPane);
 
 		contentPane.addTab("Integer", new ConfigurationPanel(
-				new IntegerDemoConfiguration(null, beanServer)));
+				new IntegerDemoConfiguration(null, beanServer), true));
 		contentPane.addTab("Float", new ConfigurationPanel(
-				new FloatDemoConfiguration(null, beanServer)));
+				new FloatDemoConfiguration(null, beanServer), true));
 		contentPane.addTab("Double", new ConfigurationPanel(
-				new DoubleDemoConfiguration(null, beanServer)));
+				new DoubleDemoConfiguration(null, beanServer), true));
 
 	}
 

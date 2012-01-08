@@ -9,7 +9,6 @@ import javax.swing.tree.TreeCellEditor;
 public class TreeCheckBoxCellEditor extends AbstractCellEditor implements
 		TreeCellEditor
 {
-
 	/**
 	 * serialVersionUID for Serialization.
 	 */
@@ -30,5 +29,4 @@ public class TreeCheckBoxCellEditor extends AbstractCellEditor implements
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }
