@@ -21,6 +21,9 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import common.config.IConfigurationLeaf;
 import common.config.IConfigurationList;
 import common.config.IConfigurationNode;
@@ -37,6 +40,12 @@ public final class ConfigurationPanel extends JPanel
 	 * serialVersionUID for Serialization.
 	 */
 	private static final long serialVersionUID = 956359852088252815L;
+
+	/**
+	 * Logger object.
+	 */
+	private static final Logger LOGGER = LoggerFactory
+			.getLogger(ConfigurationPanel.class);
 
 	/**
 	 * Label showing the name of the configuration at the head of the panel.
@@ -200,6 +209,10 @@ public final class ConfigurationPanel extends JPanel
 	 */
 	public void setConfiguration(final IConfigurationNode configuration)
 	{
+		if (LOGGER.isDebugEnabled())
+		{
+			LOGGER.debug("setConfiguration");
+		}
 		_leftComponentPanel.removeAll();
 		_rightComponentPanel.removeAll();
 		_leftAdvancedComponentPanel.removeAll();
