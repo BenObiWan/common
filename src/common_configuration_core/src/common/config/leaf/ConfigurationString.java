@@ -98,8 +98,8 @@ public class ConfigurationString extends
 	@Override
 	public boolean validateValue(final String value)
 	{
-		return (value == null)
-				|| (_iMaxLength > 0 && (value.length() <= _iMaxLength));
+		return (value == null) || _iMaxLength <= 0
+				|| (value.length() <= _iMaxLength);
 	}
 
 	/**
