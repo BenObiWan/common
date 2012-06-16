@@ -96,7 +96,8 @@ public final class ConfigurationInteger extends
 	public boolean validateValue(final Integer value)
 	{
 		return (value == null)
-				|| (value.intValue() >= _minValue.intValue() && value
-						.intValue() <= _maxValue.intValue());
+				|| ((_minValue == null || (value.intValue() >= _minValue
+						.intValue())) && (_maxValue == null || (value
+						.intValue() <= _maxValue.intValue())));
 	}
 }
