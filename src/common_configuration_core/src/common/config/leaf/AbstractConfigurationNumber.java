@@ -71,6 +71,11 @@ public abstract class AbstractConfigurationNumber<TYPE extends Number, DISP_TYPE
 				commandLineValue);
 		_minValue = minValue;
 		_maxValue = maxValue;
+		if (!validateValue(commandLineValue))
+		{
+			throw new InvalidConfigurationException(strInvalidMessage
+					+ " in command line : " + commandLineValue);
+		}
 	}
 
 	/**

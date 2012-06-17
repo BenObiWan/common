@@ -19,7 +19,7 @@ public class ConfigurationString extends
 	 */
 	private final int _iMaxLength;
 
-	// TODO add a pattern for the vérification of the String
+	// TODO add a pattern for the verification of the String
 
 	/**
 	 * Creates a new ConfigurationString with a command line value.
@@ -59,6 +59,11 @@ public class ConfigurationString extends
 				strInvalidMessage, bAdvanced, displayType, defaultValue,
 				commandLineValue);
 		_iMaxLength = iMaxLength;
+		if (!validateValue(commandLineValue))
+		{
+			throw new InvalidConfigurationException(strInvalidMessage
+					+ " in command line : " + commandLineValue);
+		}
 	}
 
 	/**

@@ -142,15 +142,15 @@ public abstract class AbstractConfigurationLeaf<TYPE, DISP_TYPE extends Enum<DIS
 		_strShortDescription = strShortDescription;
 		_strLongDescription = strLongDescription;
 		_strInvalidMessage = strInvalidMessage;
+		_defaultValue = defaultValue;
+		_displayType = displayType;
+		_commandLineValue = commandLineValue;
+		_bAdvanced = bAdvanced;
 		if (!validateValue(commandLineValue))
 		{
 			throw new InvalidConfigurationException(_strInvalidMessage
 					+ " in command line : " + commandLineValue);
 		}
-		_defaultValue = defaultValue;
-		_displayType = displayType;
-		_commandLineValue = commandLineValue;
-		_bAdvanced = bAdvanced;
 		updateCurrentValue();
 	}
 
