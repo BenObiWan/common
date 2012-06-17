@@ -95,7 +95,8 @@ public final class ConfigurationFloat extends
 	public boolean validateValue(final Float value)
 	{
 		return (value == null)
-				|| (value.floatValue() >= _minValue.floatValue() && value
-						.floatValue() <= _maxValue.floatValue());
+				|| ((_minValue == null || (value.floatValue() >= _minValue
+						.floatValue())) && (_maxValue == null || (value
+						.floatValue() <= _maxValue.floatValue())));
 	}
 }

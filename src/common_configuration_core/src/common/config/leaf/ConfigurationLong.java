@@ -94,7 +94,9 @@ public final class ConfigurationLong extends
 	public boolean validateValue(final Long value)
 	{
 		return (value == null)
-				|| (value.longValue() >= _minValue.longValue() && value
-						.longValue() <= _maxValue.longValue());
+				|| ((_minValue == null || (value.longValue() >= _minValue
+						.longValue())) && (_maxValue == null || (value
+						.longValue() <= _maxValue.longValue())));
+
 	}
 }

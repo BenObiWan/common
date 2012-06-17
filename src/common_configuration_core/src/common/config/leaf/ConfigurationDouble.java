@@ -96,7 +96,8 @@ public final class ConfigurationDouble extends
 	public boolean validateValue(final Double value)
 	{
 		return (value == null)
-				|| (value.doubleValue() >= _minValue.doubleValue() && value
-						.doubleValue() <= _maxValue.doubleValue());
+				|| ((_minValue == null || (value.doubleValue() >= _minValue
+						.doubleValue())) && (_maxValue == null || (value
+						.doubleValue() <= _maxValue.doubleValue())));
 	}
 }
