@@ -20,22 +20,22 @@ public abstract class AbstractConfigurationNode extends AbstractConfiguration
 	/**
 	 * A Map containing all the leaf of this node.
 	 */
-	private final Map<String, IConfigurationLeaf<?, ?>> _leafMap = new HashMap<String, IConfigurationLeaf<?, ?>>();
+	private final Map<String, IConfigurationLeaf<?, ?>> _leafMap = new HashMap<>();
 
 	/**
 	 * A Set containing all the leaf of this node sorted by name.
 	 */
-	private final SortedSet<IConfigurationLeaf<?, ?>> _leafSet = new TreeSet<IConfigurationLeaf<?, ?>>();
+	private final SortedSet<IConfigurationLeaf<?, ?>> _leafSet = new TreeSet<>();
 
 	/**
 	 * A Map containing all the children of this node.
 	 */
-	private final Map<String, IConfigurationNodeElement> _childMap = new HashMap<String, IConfigurationNodeElement>();
+	private final Map<String, IConfigurationNodeElement> _childMap = new HashMap<>();
 
 	/**
 	 * A Set containing all the children of this node sorted by name.
 	 */
-	private final SortedSet<IConfigurationNodeElement> _childSet = new TreeSet<IConfigurationNodeElement>();
+	private final SortedSet<IConfigurationNodeElement> _childSet = new TreeSet<>();
 
 	/**
 	 * The {@link MBeanServer} to use.

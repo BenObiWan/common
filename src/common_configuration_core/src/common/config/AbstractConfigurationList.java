@@ -20,7 +20,7 @@ public abstract class AbstractConfigurationList<CONF extends IConfigurationListE
 	/**
 	 * Set containing all the elements of this {@link IConfigurationList}.
 	 */
-	protected final ConcurrentSkipListSet<CONF> _elementSet = new ConcurrentSkipListSet<CONF>();
+	protected final ConcurrentSkipListSet<CONF> _elementSet = new ConcurrentSkipListSet<>();
 
 	/**
 	 * Creates a new AbstractConfigurationList.
