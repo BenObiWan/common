@@ -79,7 +79,7 @@ public final class ConfigurationPanel extends JPanel
 	/**
 	 * List of component to show on this panel.
 	 */
-	private final ConcurrentLinkedQueue<EntryComponent<?, ?, ?>> _lEntry = new ConcurrentLinkedQueue<EntryComponent<?, ?, ?>>();
+	private final ConcurrentLinkedQueue<EntryComponent<?, ?, ?>> _lEntry = new ConcurrentLinkedQueue<>();
 
 	/**
 	 * Check box to control whether to show the advanced options or not.
