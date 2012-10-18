@@ -1,8 +1,11 @@
 package common.swing;
 
 import java.awt.Component;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.AbstractCellEditor;
+import javax.swing.JCheckBox;
 import javax.swing.JTree;
 import javax.swing.tree.TreeCellEditor;
 
@@ -26,21 +29,31 @@ public class TreeCheckBoxCellEditor extends AbstractCellEditor implements
 	 */
 	private final JTree _tree;
 
+	private final TreeCheckBoxCellRenderer _renderer;
+
 	/**
 	 * Creates a new TreeCheckBoxCellEditor.
 	 * 
 	 * @param tree
 	 *            the {@link JTree} edited by this editor.
 	 */
-	public TreeCheckBoxCellEditor(final JTree tree)
+	public TreeCheckBoxCellEditor(final JTree tree,
+			final TreeCheckBoxCellRenderer renderer)
 	{
 		_tree = tree;
+		_renderer = renderer;
 	}
 
 	@Override
 	public Object getCellEditorValue()
 	{
-		// TODO Auto-generated method stub
+		final Component comp = _renderer.getRenderer();
+		if (comp instanceof JCheckBox)
+		{
+			final JCheckBox checkbox = (JCheckBox) comp;
+
+			return new CheckBoxNode(checkbox.getText(), checkbox.isSelected());
+		}
 		return null;
 	}
 
@@ -52,6 +65,25 @@ public class TreeCheckBoxCellEditor extends AbstractCellEditor implements
 		final Component cellEditor = _tree.getCellRenderer()
 				.getTreeCellRendererComponent(tree, value, true, expanded,
 						leaf, row, true);
+
+		// editor always selected / focused
+		final ItemListener itemListener = new ItemListener()
+		{
+			@SuppressWarnings("synthetic-access")
+			@Override
+			public void itemStateChanged(final ItemEvent itemEvent)
+			{
+				if (stopCellEditing())
+				{
+					fireEditingStopped();
+				}
+			}
+		};
+		if (cellEditor instanceof JCheckBox)
+		{
+			((JCheckBox) cellEditor).addItemListener(itemListener);
+		}
+
 		return cellEditor;
 	}
 }

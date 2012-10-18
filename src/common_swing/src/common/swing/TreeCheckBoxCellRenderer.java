@@ -55,6 +55,8 @@ public class TreeCheckBoxCellRenderer extends DefaultTreeCellRenderer
 	 */
 	private final Color _unselectedBackgroundColor;
 
+	private Component _renderer;
+
 	/**
 	 * Creates a new TreeCheckBoxCellRenderer.
 	 */
@@ -86,13 +88,17 @@ public class TreeCheckBoxCellRenderer extends DefaultTreeCellRenderer
 		_unselectedBackgroundColor = UIManager.getColor("Tree.textBackground");
 	}
 
+	public Component getRenderer()
+	{
+		return _renderer;
+	}
+
 	@Override
 	public Component getTreeCellRendererComponent(final JTree tree,
 			final Object value, final boolean bSelected,
 			final boolean expanded, final boolean leaf, final int row,
 			final boolean bHasFocus)
 	{
-		Component renderer;
 		if ((value != null) && (value instanceof ISelectableTreeNode)
 				&& ((ISelectableTreeNode) value).isSelectable())
 		{
@@ -111,13 +117,13 @@ public class TreeCheckBoxCellRenderer extends DefaultTreeCellRenderer
 				_checkBoxCellRenderer.setForeground(_unselectedForegroundColor);
 				_checkBoxCellRenderer.setBackground(_unselectedBackgroundColor);
 			}
-			renderer = _checkBoxCellRenderer;
+			_renderer = _checkBoxCellRenderer;
 		}
 		else
 		{
-			renderer = super.getTreeCellRendererComponent(tree, value,
+			_renderer = super.getTreeCellRendererComponent(tree, value,
 					bSelected, expanded, leaf, row, bHasFocus);
 		}
-		return renderer;
+		return _renderer;
 	}
 }

@@ -42,9 +42,10 @@ public final class SelectableTreeDemoFrame extends JFrame
 		_tree = new JTree(rootNode);
 		expandAll();
 
-		_tree.setCellRenderer(new TreeCheckBoxCellRenderer());
+		TreeCheckBoxCellRenderer renderer = new TreeCheckBoxCellRenderer();
+		_tree.setCellRenderer(renderer);
 
-		_tree.setCellEditor(new TreeCheckBoxCellEditor(_tree));
+		_tree.setCellEditor(new TreeCheckBoxCellEditor(_tree, renderer));
 		_tree.setEditable(true);
 
 		final JScrollPane scrollPane = new JScrollPane(_tree);
