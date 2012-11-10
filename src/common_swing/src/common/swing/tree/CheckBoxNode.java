@@ -1,4 +1,4 @@
-package common.swing;
+package common.swing.tree;
 
 public class CheckBoxNode
 {

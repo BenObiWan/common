@@ -1,4 +1,4 @@
-package common.swing;
+package common.swing.tree;
 
 import java.awt.Component;
 import java.awt.event.ItemEvent;

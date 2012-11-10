@@ -1,4 +1,4 @@
-package common.swing;
+package common.swing.tree;
 
 import java.awt.Color;
 import java.awt.Component;
