@@ -47,43 +47,43 @@ public class LongEntryComponent extends
 	@Override
 	protected void generateComponent()
 	{
-		long min, max, initValue;
+		Long min, max, initValue;
 		if (_entry.getMinValue() != null)
 		{
-			min = _entry.getMinValue().longValue();
+			min = _entry.getMinValue();
 		}
 		else
 		{
-			min = Long.MIN_VALUE;
+			min = Long.valueOf(Long.MIN_VALUE);
 		}
 		if (_entry.getMaxValue() != null)
 		{
-			max = _entry.getMaxValue().longValue();
+			max = _entry.getMaxValue();
 		}
 		else
 		{
-			max = Long.MAX_VALUE;
+			max = Long.valueOf(Long.MAX_VALUE);
 		}
 		if (_entry.getCurrentValue() != null)
 		{
-			initValue = _entry.getCurrentValue().longValue();
+			initValue = _entry.getCurrentValue();
 		}
 		else
 		{
-			initValue = 0;
+			initValue = Long.valueOf(0);
 		}
 		final String strToolTip = "Min : " + min + " Max : " + max;
 		switch (_dispType)
 		{
 		case SPINNER:
 			final SpinnerNumberModel spinnerModel = new SpinnerNumberModel(
-					initValue, min, max, 1);
+					initValue, min, max, Long.valueOf(1));
 			_entryComponent = new JSpinner(spinnerModel);
 			spinnerModel.addChangeListener(new ValidateChangeListener());
 			_entryComponent.setToolTipText(strToolTip);
 			break;
 		case TEXTFIELD:
-			_entryComponent = new JTextField(Long.toString(initValue));
+			_entryComponent = new JTextField(initValue.toString());
 			_entryComponent.setToolTipText(strToolTip);
 			((JTextField) _entryComponent)
 					.addFocusListener(new ValidateFocusListener());
