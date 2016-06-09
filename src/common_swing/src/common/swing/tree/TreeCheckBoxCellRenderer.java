@@ -55,6 +55,9 @@ public class TreeCheckBoxCellRenderer extends DefaultTreeCellRenderer
 	 */
 	private final Color _unselectedBackgroundColor;
 
+	/**
+	 * The renderer used to display this component.
+	 */
 	private Component _renderer;
 
 	/**
@@ -88,6 +91,11 @@ public class TreeCheckBoxCellRenderer extends DefaultTreeCellRenderer
 		_unselectedBackgroundColor = UIManager.getColor("Tree.textBackground");
 	}
 
+	/**
+	 * Get the renderer used to display this component.
+	 *
+	 * @return the renderer used to display this component.
+	 */
 	public Component getRenderer()
 	{
 		return _renderer;

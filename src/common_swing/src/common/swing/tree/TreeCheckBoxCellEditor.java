@@ -29,6 +29,9 @@ public class TreeCheckBoxCellEditor extends AbstractCellEditor implements
 	 */
 	private final JTree _tree;
 
+	/**
+	 * The renderer to use.
+	 */
 	private final TreeCheckBoxCellRenderer _renderer;
 
 	/**
@@ -36,6 +39,8 @@ public class TreeCheckBoxCellEditor extends AbstractCellEditor implements
 	 * 
 	 * @param tree
 	 *            the {@link JTree} edited by this editor.
+	 * @param renderer
+	 *            the renderer to use.
 	 */
 	public TreeCheckBoxCellEditor(final JTree tree,
 			final TreeCheckBoxCellRenderer renderer)
