@@ -1,7 +1,7 @@
 package common.config.db;
 
 /**
- * Configuration for an SQLite database.
+ * Configuration for a SQLite database.
  * 
  * @author benobiwan
  * 

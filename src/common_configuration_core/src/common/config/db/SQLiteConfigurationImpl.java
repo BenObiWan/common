@@ -45,10 +45,10 @@ public final class SQLiteConfigurationImpl extends AbstractConfigurationBranch i
 	 * @param mBeanServer
 	 *            the {@link MBeanServer} to use.
 	 */
-	public SQLiteConfigurationImpl(IConfiguration parent, MBeanServer mBeanServer)
+	public SQLiteConfigurationImpl(final IConfiguration parent, final MBeanServer mBeanServer)
 	{
 		super(parent, SQLITE_CONFIGURATION_TAG, mBeanServer);
-		_leafDatabaseFileName = new ConfigurationString(parent, DATABASE_FILE_NAME_TAG, DATABASE_FILE_NAME_SHORT_DESC,
+		_leafDatabaseFileName = new ConfigurationString(this, DATABASE_FILE_NAME_TAG, DATABASE_FILE_NAME_SHORT_DESC,
 				DATABASE_FILE_NAME_LONG_DESC, DATABASE_FILE_NAME_INVALID_MESSAGE, false, StringDisplayType.TEXTFIELD, 0,
 				"");
 		addLeaf(_leafDatabaseFileName);
@@ -68,11 +68,11 @@ public final class SQLiteConfigurationImpl extends AbstractConfigurationBranch i
 	 * @throws InvalidConfigurationException
 	 *             one of the given value is invalid.
 	 */
-	public SQLiteConfigurationImpl(IConfiguration parent, MBeanServer mBeanServer,
+	public SQLiteConfigurationImpl(final IConfiguration parent, final MBeanServer mBeanServer,
 			final String strCommandLineDatabaseFileName) throws InvalidConfigurationException
 	{
 		super(parent, SQLITE_CONFIGURATION_TAG, mBeanServer);
-		_leafDatabaseFileName = new ConfigurationString(parent, DATABASE_FILE_NAME_TAG, DATABASE_FILE_NAME_SHORT_DESC,
+		_leafDatabaseFileName = new ConfigurationString(this, DATABASE_FILE_NAME_TAG, DATABASE_FILE_NAME_SHORT_DESC,
 				DATABASE_FILE_NAME_LONG_DESC, DATABASE_FILE_NAME_INVALID_MESSAGE, false, StringDisplayType.TEXTFIELD, 0,
 				"", strCommandLineDatabaseFileName);
 		addLeaf(_leafDatabaseFileName);

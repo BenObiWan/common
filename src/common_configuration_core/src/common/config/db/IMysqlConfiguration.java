@@ -1,17 +1,17 @@
 package common.config.db;
 
 /**
- * Configuration for an Mysql database.
+ * Configuration for a Mysql database.
  * 
  * @author benobiwan
  * 
  */
-public interface IMysqlConfiguration
+public interface IMysqlConfiguration extends IDatabaseConfiguration
 {
 	/**
 	 * Tag of this configuration node.
 	 */
-	String SQLITE_CONFIGURATION_TAG = "MysqlConfiguration";
+	String MYSQL_CONFIGURATION_TAG = "MysqlConfiguration";
 
 	/**
 	 * Tag for the database server.

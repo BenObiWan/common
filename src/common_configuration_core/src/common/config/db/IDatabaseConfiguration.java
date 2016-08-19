@@ -23,5 +23,4 @@ public interface IDatabaseConfiguration extends IConfigurationBranch, Comparable
 	 * @return connection String of the database.
 	 */
 	String getDatabaseConnection();
-
 }
