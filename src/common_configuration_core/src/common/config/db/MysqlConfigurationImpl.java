@@ -10,6 +10,12 @@ import common.config.display.StringDisplayType;
 import common.config.leaf.ConfigurationInteger;
 import common.config.leaf.ConfigurationString;
 
+/**
+ * An implementation of the {@link IMysqlConfiguration} interface.
+ * 
+ * @author benobiwan
+ *
+ */
 public final class MysqlConfigurationImpl extends AbstractConfigurationBranch implements IMysqlConfiguration
 {
 	/**
@@ -112,6 +118,15 @@ public final class MysqlConfigurationImpl extends AbstractConfigurationBranch im
 	 */
 	private final static String DATABASE_PASSWORD_INVALID_MESSAGE = "Invalid password to connect to the Mysql database.";
 
+	/**
+	 * Creates a new MysqlConfigurationImpl using default values for every
+	 * elements.
+	 * 
+	 * @param parent
+	 *            the parent configuration.
+	 * @param mBeanServer
+	 *            the {@link MBeanServer} to use.
+	 */
 	public MysqlConfigurationImpl(final IConfiguration parent, final MBeanServer mBeanServer)
 	{
 		super(parent, MYSQL_CONFIGURATION_TAG, mBeanServer);
@@ -136,6 +151,31 @@ public final class MysqlConfigurationImpl extends AbstractConfigurationBranch im
 		addLeaf(_leafDatabasePassword);
 	}
 
+	/**
+	 * Creates a new SQLiteConfigurationImpl with values coming from the command
+	 * line.
+	 * 
+	 * @param parent
+	 *            the parent configuration.
+	 * @param mBeanServer
+	 *            the {@link MBeanServer} to use.
+	 * @param strCommandLineDatabaseServer
+	 *            the value specified on the command line for the database
+	 *            server name.
+	 * @param iCommandLineDatabasePort
+	 *            the value specified on the command line for the database TCP
+	 *            port.
+	 * @param strCommandLineDatabaseName
+	 *            the value specified on the command line for the database name.
+	 * @param strCommandLineDatabaseUsername
+	 *            the value specified on the command line for the database
+	 *            username.
+	 * @param strCommandLineDatabasePassword
+	 *            the value specified on the command line for the database
+	 *            password.
+	 * @throws InvalidConfigurationException
+	 *             one of the given value is invalid.
+	 */
 	public MysqlConfigurationImpl(final IConfiguration parent, final MBeanServer mBeanServer,
 			final String strCommandLineDatabaseServer, final Integer iCommandLineDatabasePort,
 			final String strCommandLineDatabaseName, final String strCommandLineDatabaseUsername,
@@ -164,6 +204,47 @@ public final class MysqlConfigurationImpl extends AbstractConfigurationBranch im
 		addLeaf(_leafDatabasePassword);
 	}
 
+	/**
+	 * Creates a new SQLiteConfigurationImpl with values coming from the command
+	 * line and from a configuration file.
+	 * 
+	 * @param parent
+	 *            the parent configuration.
+	 * @param mBeanServer
+	 *            the {@link MBeanServer} to use.
+	 * @param strCommandLineDatabaseServer
+	 *            the value specified on the command line for the database
+	 *            server name.
+	 * @param iCommandLineDatabasePort
+	 *            the value specified on the command line for the database TCP
+	 *            port.
+	 * @param strCommandLineDatabaseName
+	 *            the value specified on the command line for the database name.
+	 * @param strCommandLineDatabaseUsername
+	 *            the value specified on the command line for the database
+	 *            username.
+	 * @param strCommandLineDatabasePassword
+	 *            the value specified on the command line for the database
+	 *            password.
+	 * @param strConfigurationLineDatabaseServer
+	 *            the value specified in the configuration file for the database
+	 *            server name.
+	 * @param iConfigurationDatabasePort
+	 *            the value specified in the configuration file for the database
+	 *            TCP port.
+	 * @param strConfigurationDatabaseName
+	 *            the value specified in the configuration file for the database
+	 *            name.
+	 * @param strConfigurationDatabaseUsername
+	 *            the value specified in the configuration file for the database
+	 *            username.
+	 * @param strConfigurationDatabasePassword
+	 *            the value specified in the configuration file for the database
+	 *            password.
+	 * 
+	 * @throws InvalidConfigurationException
+	 *             one of the given value is invalid.
+	 */
 	public MysqlConfigurationImpl(final IConfiguration parent, final MBeanServer mBeanServer,
 			final String strCommandLineDatabaseServer, final Integer iCommandLineDatabasePort,
 			final String strCommandLineDatabaseName, final String strCommandLineDatabaseUsername,
